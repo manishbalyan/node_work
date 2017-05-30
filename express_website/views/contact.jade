@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    .container
+        form(method='post', action='contact/send')
+            h1 contact
+            .form-group
+                label Name
+                input.form-control(type='text', placeholder='Enter your name', name='name')
+                .form-group
+                label Email
+                input.form-control(type='email', placeholder='Enter your email', name='email')
+                .form-group
+                label Message
+                textarea.form-control(type='text', placeholder='Enter message', name='message')
+                button.btn.btn-default(type='submit') Submit
