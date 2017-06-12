@@ -3,6 +3,8 @@ var router = express.Router();
 var multer = require('multer');
 var User = require('../models/user');
 var flash = require('connect-flash');
+var passport = require('passport');
+var localStrategy = require('passport-local').Strategy;
 
 
 
@@ -87,6 +89,11 @@ router.post('/register', uploads.single('profileimage'), function (req, res,next
 
     }
 
+});
+
+router.post('/login', passport.authenticate('local', {faliureRedirect:'/user/login', faliureFlash:'Invalid username or password'}),function (req,res) {
+    req.flash("authentication success");
+    res.redirect('/');
 });
 
 module.exports = router;
